@@ -1,81 +1,60 @@
+import gsap from "gsap";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { performanceImages } from "../../constants";
+import { performanceImages, performanceImgPositions } from "../../constants";
 import { useMediaQuery } from "react-responsive";
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Performance = () => {
-
   const isMobile = useMediaQuery({ query: '(max-width: 1024px)' });
   const sectionRef = useRef(null);
 
   useGSAP(() => {
-    const section = sectionRef.current;
-    const isDesktop = window.innerWidth >= 1024;
-
-    // Text animation
-    gsap.fromTo(
-      ".content p",
-      { opacity: 0, y: 10 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".content p",
-          start: "top bottom",
-          end: "top center",
-          scrub: true,  
-          invalidateOnRefresh: true,
-        },
-      }
-    );
-
-    // Desktop image timeline
-    if (isDesktop) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom top",
-          scrub: true,
-          refreshPriority: 2,
-          invalidateOnRefresh: true,
-        },
-        defaults: { duration: 1, ease: "power2.out" },
-      });
-
-      performanceImages.forEach(({ id, left, right, bottom, transform }) => {
-        if (id === "p5") return; // Skip p5
-        const img = section.querySelector(`img.${id}`);
-        if (!img) return;
-        tl.to(
-          img,
-          {
-            left,
-            right,
-            bottom,
-            transform,
-            opacity: 1,
+      // Text fade-in and move-up animation
+      gsap.fromTo(
+        ".content p",
+        { opacity: 0, y: 10 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".content p",
+            start: "top bottom",
+            end: "top center",
+            scrub: true,
+            invalidateOnRefresh: true,
           },
-          0 // All at time 0
-        );
+        }
+      );
+
+      // Desktop image timeline
+
+      if(isMobile) return;
+   
+      const tl = gsap.timeline({
+        defaults: { ease: "power1.inOut", duration: 2, overwrite: "auto" },
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top bottom",
+          end: "center center",
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
       });
-    }
 
-    // Refresh ScrollTrigger on resize
-    const handleResize = () => ScrollTrigger.refresh();
-    window.addEventListener("resize", handleResize);
+      performanceImgPositions.forEach((pos) => {
+        if (pos.id === "p5") return; // Skip p5
+    
+        const toVars = { };
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+        if (pos.left !== undefined) toVars.left = `.${pos.left}%`;
+        if (pos.right !== undefined) toVars.right = `.${pos.right}%`;
+        if (pos.bottom !== undefined) toVars.bottom = `.${pos.bottom}%`;
+        if (pos.transform !== undefined) toVars.transform = pos.transform;
+        tl.to(`.${pos.id}`, toVars, 0);
+      });
+  }, { scope: sectionRef , dependencies: [isMobile] });
 
   return (
     <section id="performance" ref={sectionRef}>
@@ -87,7 +66,6 @@ const Performance = () => {
             alt={id}
             key={id}
             className={id}
-            style={{ opacity: 0 }}
           />
         ))}
       </div>
@@ -96,11 +74,12 @@ const Performance = () => {
           Run graphics-intensive workflows with a responsiveness that keeps up
           with your imagination. The M4 family of chips features a GPU with a
           second-generation hardware accelerated ray tracing engine that renders
-          images faster, so{" "}
+          images faster, so
+          {" "}
           <span className="text-white">
-            {" "}
             gaming feels more impressive and realistic than ever.
-          </span>{" "}
+          </span>
+          {" "}
           And dynamic Caching optimizes fast on-chip memory to dramatically
           increase average GPU utilization -- driving a huge performance boost for
           the most demanding pro apps and games.
