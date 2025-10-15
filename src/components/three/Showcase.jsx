@@ -14,7 +14,7 @@ useGSAP(() => {
                 start: "top top",
                 end: "bottom top",
                 scrub: true,
-                pin: true
+                pin: true,
             }
         });
 
@@ -39,19 +39,15 @@ useGSAP(() => {
                     <h2>Rocket Chip</h2>
                     <div className="space-y-5 mt-7 pe-10">
                         <p>
-                            Introducing {""}
-                            <span className="text-white">
-                                M4, the next generation of Apple Silicon
-                            </span>
-                            . M4 powers
-                            <p>
-                                It drives Apple Intelligence on iPad Pro, so you can write, create, and accomplish more with ease. All in a design that's unbelievably thin, light, and powerful.
-                            </p>
-                            <p>
-                                A brand-new display engine delivers breath-taking precision, color accuracy, and brightness. And a next-gen GPU with hardware-accelerated ray tracing brings console-level graphics to your fingertips.
-                            </p>
-                            <p className="text-primary">Learn more about Apple Intelligence</p>
+                            Introducing <span className="text-white">M4, the next generation of Apple Silicon</span>. M4 powers
                         </p>
+                        <p>
+                            It drives Apple Intelligence on iPad Pro, so you can write, create, and accomplish more with ease. All in a design that's unbelievably thin, light, and powerful.
+                        </p>
+                        <p>
+                            A brand-new display engine delivers breath-taking precision, color accuracy, and brightness. And a next-gen GPU with hardware-accelerated ray tracing brings console-level graphics to your fingertips.
+                        </p>
+                        <p className="text-primary">Learn more about Apple Intelligence</p>
                     </div>
                 </div>
                 <div className="max-w-3xs space-y-14">
