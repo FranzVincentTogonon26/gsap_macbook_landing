@@ -12,14 +12,15 @@ useEffect(() => {
 
   return (
    <section id="hero">
-    <div>
-        <h1>MacBook Pro</h1>
-        <img src="/title.png" alt="MacBook Title" />
+        <div>
+            <h1>MacBook Pro</h1>
+            <img src="/title.png" alt="MacBook Title" />
+        </div>
         <video ref={videoRef} src="/videos/hero.mp4" autoPlay muted playsInline />
         <button type="button">Buy</button>
         <p>From $1599 0r $133/mo for 12 months</p>
-    </div>
    </section>
+
   )
 }
 

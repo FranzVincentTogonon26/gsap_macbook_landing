@@ -1,5 +1,5 @@
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import { useMediaQuery } from "react-responsive"
 
 const Showcase = () => {
@@ -14,7 +14,7 @@ useGSAP(() => {
                 start: "top top",
                 end: "bottom top",
                 scrub: true,
-                pin: false,
+                pin: true,
             }
         });
 
