@@ -112,7 +112,7 @@ body {
     }
   }
 
-  #hero {
+   #hero {
     @apply h-fit lg:h-[80vh] col-center mt-40 lg:mt-20 2xl:mt-[7vh];
 
     div {
@@ -148,7 +148,7 @@ body {
     }
 
     .controls {
-      @apply absolute z-50 bottom-40 lg:bottom-40 2xl:bottom-52 left-1/2 -translate-x-1/2;
+      @apply absolute z-50 bottom-40 lg:bottom-40 2xl:bottom-52 left-1/2 -translate-x-1/2 ;
 
       .info {
         @apply text-xs text-white bg-black/20 px-2 py-1 rounded-lg;
@@ -187,11 +187,11 @@ body {
       @apply relative lg:overflow-hidden;
 
       video {
-        @apply w-full object-cover object-center;
+        @apply w-full object-cover object-center mt-0;
       }
 
       .mask {
-        @apply absolute h-full top-0 lg:-top-20 xl:top-0;
+        @apply absolute h-full top-0 lg:-top-20 xl:top-10;
 
         img {
           @apply h-full scale-150 lg:scale-100;
@@ -222,9 +222,9 @@ body {
       }
     }
   }
-
+  
   #performance {
-    @apply w-dvw h-full overflow-hidden pt-20 lg:pt-20 flex flex-col items-center relative;
+    @apply w-dvw h-full overflow-hidden pt-200 lg:pt-200 xl:pt-200 flex flex-col items-center relative;
 
     h2 {
       @apply font-semibold text-3xl lg:text-6xl text-white max-w-2xl text-center;
@@ -274,7 +274,7 @@ body {
       }
     }
   }
-
+  
   #features {
     @apply pt-40 relative;
 
@@ -430,4 +430,5 @@ body {
       }
     }
   }
+
 }
