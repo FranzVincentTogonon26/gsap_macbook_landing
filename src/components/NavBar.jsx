@@ -20,6 +20,10 @@ const NavBar = () => {
               <button>
                 <img src="/cart.svg" alt="Cart" />
               </button>
+              <button id="menu-toggle">
+                  <div></div>
+                  <div></div>
+              </button>
           </div>
       </nav>
     </header>

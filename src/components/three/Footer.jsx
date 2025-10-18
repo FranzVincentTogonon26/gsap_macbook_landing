@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="links">
         <p>Copyright © 2024 Apple Inc. All rights reserved.</p>
         <ul>
-          {footerLinks.map(({label, link}) => (
+          {footerLinks.map(({label, link}) => ( 
             <li key={label}>
               <a href={link}>{label}</a>
             </li>
