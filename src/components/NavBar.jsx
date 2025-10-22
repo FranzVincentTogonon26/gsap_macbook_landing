@@ -33,8 +33,8 @@ const Navbar = () => {
             className='mt-0.5 z-100'
               onClick={toggleMenu} 
             >
-              <div className={clsx( 'toggle-menu', isMenuOpen ? 'rotate-40 -translate-x-2 translate-y-1' : 'top-2 left-1/2 -translate-x-1/2' )}></div>
-              <div className={clsx( 'toggle-menu', isMenuOpen ? '-rotate-40 -translate-x-2 -translate-y-0.5' : 'top-5 left-1/2 -translate-x-1/2' )}></div>
+              <div className={clsx( 'toggle-menu', isMenuOpen ? 'rotate-43 -translate-x-2 translate-y-1 ' : 'top-2 left-1/2 -translate-x-1/2' )}></div>
+              <div className={clsx( 'toggle-menu', isMenuOpen ? '-rotate-43 -translate-x-2 -translate-y-0.5' : 'top-5 left-1/2 -translate-x-1/2' )}></div>
             </button>
           </div>
       </div>
@@ -49,7 +49,7 @@ const Navbar = () => {
             key={item.label}
             href={item.label}
             className={clsx( 'drop-content ', isMenuOpen ? 'opacity-100 translate-y-10' : 'opacity-0 translate-y-0' ) }
-            style={{ transitionDelay: isMenuOpen ? `${index * 80}ms` : '0ms' }}
+            style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
           >
             <h3>{item.label}</h3>
           </a>
